@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete User</title>
+</head>
+<body>
+<h1>Confirm Deletion</h1>
+<p>Are you sure you want to delete user with ID <span th:text="${user.id}"></span>?</p>
+<form method="post" th:action="@{/user/delete/{id}(id=${user.id})}">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Excluir">
+</form>
+<a href="/user">Cancel</a>
+</body>
+</html>
