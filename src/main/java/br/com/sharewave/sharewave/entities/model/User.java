@@ -4,6 +4,7 @@ import br.com.sharewave.sharewave.dtos.UserDTO;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -17,17 +18,26 @@ public class User {
     private String phone;
     private String email;
     private LocalDate date;
+//    @ManyToMany
+//    @JoinTable(name = "followers_users")
+//    private List<Follower> followers;
+    @ManyToMany
+    @JoinTable(name = "friends_users",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "friend_id"))
+    private List<Friend> friends;
 
     public User() {
     }
 
-    public User(String name, String password, String address, String phone, String email, LocalDate date) {
+    public User(String name, String password, String address, String phone, String email, LocalDate date, List<Friend> friends) {
         this.name = name;
         this.password = password;
         this.address = address;
         this.phone = phone;
         this.email = email;
         this.date = date;
+        this.friends = friends;
     }
 
     public User (UserDTO data) {
@@ -95,15 +105,11 @@ public class User {
         this.date = date;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", date=" + date +
-                '}';
+    public List<Friend> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<Friend> friends) {
+        this.friends = friends;
     }
 }
