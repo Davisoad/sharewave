@@ -2,9 +2,7 @@ package br.com.sharewave.sharewave.entities.model;
 
 import br.com.sharewave.sharewave.dtos.UserDTO;
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -21,23 +19,17 @@ public class User {
 //    @ManyToMany
 //    @JoinTable(name = "followers_users")
 //    private List<Follower> followers;
-    @ManyToMany
-    @JoinTable(name = "friends_users",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "friend_id"))
-    private List<Friend> friends;
 
     public User() {
     }
 
-    public User(String name, String password, String address, String phone, String email, LocalDate date, List<Friend> friends) {
+    public User(String name, String password, String address, String phone, String email, LocalDate date) {
         this.name = name;
         this.password = password;
         this.address = address;
         this.phone = phone;
         this.email = email;
         this.date = date;
-        this.friends = friends;
     }
 
     public User (UserDTO data) {
@@ -103,13 +95,5 @@ public class User {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public List<Friend> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(List<Friend> friends) {
-        this.friends = friends;
     }
 }

@@ -6,33 +6,15 @@ import br.com.sharewave.sharewave.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/user")
 public class UserController {
     private final UserService userService;
-    //private final List<User> UserList = new ArrayList<>();
-
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
-//    @GetMapping
-//    public String getUser(){
-//        return "users/UserRegister";
-//    }
-//    @PostMapping
-//    public String postUser(UserDTO data)
-//    {
-//        UserList.add(new User(data));
-//        System.out.println(UserList);
-//
-//        return "users/UserRegister";
-//    }
 
     @GetMapping
     public String showUsers(Model model) {
@@ -64,7 +46,7 @@ public class UserController {
         }
     }
 
-    @PostMapping(path = "edit/{id}")
+    @PostMapping(path = "/edit/{id}")
     public String editUser(@PathVariable(name = "id") Long id, @ModelAttribute(name = "user") UserDTO data) {
         userService.updateUser(id, data);
         return "redirect:/user";
@@ -75,5 +57,4 @@ public class UserController {
         userService.deleteUser(id);
         return "redirect:/user";
     }
-
 }

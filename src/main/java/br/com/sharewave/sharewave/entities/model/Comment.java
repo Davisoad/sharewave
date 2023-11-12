@@ -1,7 +1,7 @@
 package br.com.sharewave.sharewave.entities.model;
 
+import br.com.sharewave.sharewave.dtos.CommentDTO;
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
@@ -31,6 +31,13 @@ public class Comment {
         this.idUser = idUser;
         this.post = post;
         this.user = user;
+    }
+
+    public Comment(CommentDTO data) {
+        this.commentContent = data.commentContent();
+        this.commentDate = data.commentDate();
+        this.idPost = data.idPost();
+        this.idUser = data.idUser();
     }
 
     public Long getId() {

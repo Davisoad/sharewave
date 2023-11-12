@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Like</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    .rounded-input {
+        border-radius: 20px;
+    }
+
+    .rounded-button {
+        border-radius: 20px;
+    }
+
+    body {
+            background-color: #A9A9A9; /* Adicionando a cor de fundo desejada para o corpo da página */
+        }
+
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+            <h1 class="mb-0">Edit Like</h1>
+        </div>
+        <div class="card-body">
+            <form method="post" th:action="@{/like/edit/{id}(id=${like.id})}">
+                <input type="hidden" name="_method" value="POST">
+
+                <div class="form-group">
+                    <label for="idPost">Id Post:</label>
+                    <input type="text" id="idPost" name="idPost" class="form-control rounded-input" required
+                           th:value="${like.idPost}">
+                </div>
+
+                <div class="form-group">
+                    <label for="idUser">Id Post:</label>
+                    <input type="text" id="idUser" name="idUser" class="form-control rounded-input" required
+                           th:value="${like.idUser}">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary rounded-button">Save</button>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <a href="/like" class="btn btn-secondary rounded-button">Return to list likes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

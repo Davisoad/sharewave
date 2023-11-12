@@ -1,5 +1,6 @@
 package br.com.sharewave.sharewave.entities.model;
 
+import br.com.sharewave.sharewave.dtos.PostDTO;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -29,6 +30,14 @@ public class Post {
         this.numberComments = numberComments;
         this.idUser = idUser;
         this.user = user;
+    }
+
+    public Post(PostDTO data) {
+        this.postContent = data.postContent();
+        this.postDate = data.postDate();
+        this.numberLikes = data.numberLikes();
+        this.numberComments = data.numberComments();
+        this.idUser = data.idUser();
     }
 
     public Long getId() {

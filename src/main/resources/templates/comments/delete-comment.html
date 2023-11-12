@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Comment</title>
+</head>
+<body>
+<h1>Confirm Deletion</h1>
+<p>Are you sure you want to delete comment with ID <span th:text="${comment.id}"></span>?</p>
+<form method="post" th:action="@{/comment/delete/{id}(id=${comment.id})}">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Excluir">
+</form>
+<a href="/comment">Cancel</a>
+</body>
+</html>

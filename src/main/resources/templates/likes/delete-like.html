@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Like</title>
+</head>
+<body>
+<h1>Confirm Deletion</h1>
+<p>Are you sure you want to delete like with ID <span th:text="${like.id}"></span>?</p>
+<form method="post" th:action="@{/like/delete/{id}(id=${like.id})}">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Excluir">
+</form>
+<a href="/like">Cancel</a>
+</body>
+</html>

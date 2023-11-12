@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Follower</title>
+</head>
+<h1>Cadastro de Follower</h1>
+
+<form method="post" action="/follower/add">
+  <label for="follower_id">Follower ID:</label>
+  <input id="follower_id" name="follower_id" type="number">
+  <br/>
+  <br/>
+  <label for="followed_user_id">Followed User ID:</label>
+  <input id="followed_user_id" name="followed_user_id" type="number">
+  <br/>
+  <br/>
+  <label for="idUser">User ID:</label>
+  <input id="idUser" name="idUser" type="number">
+
+  <!-- Adicione um campo oculto para o ID do follower, se necessário -->
+  <input type="hidden" name="id" value="0">
+
+  <input type="submit" name="Cadastrar">
+</form>
+</html>

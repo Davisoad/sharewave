@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Follower</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .rounded-input {
+        border-radius: 20px;
+    }
+
+    .rounded-button {
+        border-radius: 20px;
+    }
+
+    body {
+            background-color: #A9A9A9; /* Adicionando a cor de fundo desejada para o corpo da página */
+        }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white text-center">
+      <h1 class="mb-0">Edit Follower</h1>
+    </div>
+    <div class="card-body">
+      <form method="post" th:action="@{/follower/edit/{id}(id=${follower.id})}">
+        <input type="hidden" name="_method" value="POST">
+
+        <div class="form-group">
+          <label for="follower_id">Follower ID:</label>
+          <input type="number" id="follower_id" name="follower_id" class="form-control rounded-input" required th:value="${follower.follower_id}">
+        </div>
+
+        <div class="form-group">
+          <label for="followed_user_id">Followed User ID:</label>
+          <input type="number" id="followed_user_id" name="followed_user_id" class="form-control rounded-input" required th:value="${follower.followed_user_id}">
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary rounded-button">Save</button>
+        </div>
+      </form>
+      <div class="text-center mt-3">
+        <a href="/follower" class="btn btn-secondary rounded-button">Return to list followers</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

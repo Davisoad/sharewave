@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Post</title>
+</head>
+<h1>Cadastro de Post</h1>
+
+<form method="post" action="/post/add">
+  <label for="postContent">Post Content:</label>
+  <input id="postContent" name="postContent">
+  <br/>
+  <br/>
+  <label for="postDate">Post Date:</label>
+  <input id="postDate" name="postDate" type="date">
+  <br/>
+  <br/>
+  <label for="numberLikes">Number of Likes:</label>
+  <input id="numberLikes" name="numberLikes" type="number">
+  <br/>
+  <br/>
+  <label for="numberComments">Number of Comments:</label>
+  <input id="numberComments" name="numberComments" type="number">
+  <br/>
+  <br/>
+  <label for="idUser">User ID:</label>
+  <input id="idUser" name="idUser" type="number">
+
+  <!-- Adicione um campo oculto para o ID do post, se necessário -->
+  <input type="hidden" name="id" value="0">
+
+  <input type="submit" name="Cadastrar">
+</form>
+</html>

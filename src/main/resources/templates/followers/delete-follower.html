@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Follower</title>
+</head>
+<body>
+<h1>Confirm Deletion</h1>
+<p>Are you sure you want to delete follower with ID <span th:text="${follower.id}"></span>?</p>
+<form method="post" th:action="@{/follower/delete/{id}(id=${follower.id})}">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Excluir">
+</form>
+<a href="/follower">Cancel</a>
+</body>
+</html>

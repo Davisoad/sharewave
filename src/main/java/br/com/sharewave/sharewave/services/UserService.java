@@ -5,6 +5,7 @@ import br.com.sharewave.sharewave.entities.model.User;
 import br.com.sharewave.sharewave.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service

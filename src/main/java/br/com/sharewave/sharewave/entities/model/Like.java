@@ -1,5 +1,6 @@
 package br.com.sharewave.sharewave.entities.model;
 
+import br.com.sharewave.sharewave.dtos.LikeDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -27,6 +28,11 @@ public class Like {
         this.idUser = idUser;
         this.post = post;
         this.user = user;
+    }
+
+    public Like(LikeDTO data) {
+        this.idPost = data.idPost();
+        this.idUser = data.idUser();
     }
 
     public Long getId() {

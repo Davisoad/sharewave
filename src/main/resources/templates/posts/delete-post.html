@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Post</title>
+</head>
+<body>
+<h1>Confirm Deletion</h1>
+<p>Are you sure you want to delete post with ID <span th:text="${post.id}"></span>?</p>
+<form method="post" th:action="@{/post/delete/{id}(id=${post.id})}">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Excluir">
+</form>
+<a href="/post">Cancel</a>
+</body>
+</html>

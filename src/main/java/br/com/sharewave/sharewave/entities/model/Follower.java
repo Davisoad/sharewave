@@ -1,5 +1,6 @@
 package br.com.sharewave.sharewave.entities.model;
 
+import br.com.sharewave.sharewave.dtos.FollowerDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -27,6 +28,11 @@ public class Follower {
         this.followed_user_id = followed_user_id;
         this.follower = follower;
         this.followedUser = followedUser;
+    }
+
+    public Follower(FollowerDTO data) {
+        this.follower_id = data.follower_id();
+        this.followed_user_id = data.followed_user_id();
     }
 
     public Long getId() {

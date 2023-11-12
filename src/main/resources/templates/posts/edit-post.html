@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Post</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    .rounded-input {
+        border-radius: 20px;
+    }
+
+    .rounded-button {
+        border-radius: 20px;
+    }
+
+    body {
+            background-color: #A9A9A9; /* Adicionando a cor de fundo desejada para o corpo da página */
+        }
+
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+            <h1 class="mb-0">Edit Post</h1>
+        </div>
+        <div class="card-body">
+            <form method="post" th:action="@{/post/edit/{id}(id=${post.id})}">
+                <input type="hidden" name="_method" value="POST">
+
+                <div class="form-group">
+                    <label for="postContent">Post Content:</label>
+                    <input type="text" id="postContent" name="postContent" class="form-control rounded-input" required
+                           th:value="${post.postContent}">
+                </div>
+
+                <div class="form-group">
+                    <label for="postDate">Post Date:</label>
+                    <input type="text" id="postDate" name="postDate" class="form-control rounded-input" required
+                           th:value="${post.postDate}">
+                </div>
+
+                <div class="form-group">
+                    <label for="numberLikes">Number of Likes:</label>
+                    <input type="number" id="numberLikes" name="numberLikes" class="form-control rounded-input" required
+                           th:value="${post.numberLikes}">
+                </div>
+
+                <div class="form-group">
+                    <label for="numberComments">Number of Comments:</label>
+                    <input type="number" id="numberComments" name="numberComments" class="form-control rounded-input"
+                           required th:value="${post.numberComments}">
+                </div>
+
+                <div class="form-group">
+                    <label for="idUser">User ID:</label>
+                    <input type="number" id="idUser" name="idUser" class="form-control rounded-input" required
+                           th:value="${post.idUser}">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary rounded-button">Save</button>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <a href="/post" class="btn btn-secondary rounded-button">Return to list posts</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
