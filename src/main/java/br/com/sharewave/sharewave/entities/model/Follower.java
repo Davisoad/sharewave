@@ -1,10 +1,18 @@
 package br.com.sharewave.sharewave.entities.model;
 
 import br.com.sharewave.sharewave.dtos.FollowerDTO;
-import jakarta.persistence.*;
+import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "followers")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Follower {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,58 +28,8 @@ public class Follower {
     @JoinColumn(name = "followed_user_id", insertable = false, updatable = false)
     private User followedUser;
 
-    public Follower() {
-    }
-
-    public Follower(Long follower_id, Long followed_user_id, User follower, User followedUser) {
-        this.follower_id = follower_id;
-        this.followed_user_id = followed_user_id;
-        this.follower = follower;
-        this.followedUser = followedUser;
-    }
-
     public Follower(FollowerDTO data) {
         this.follower_id = data.follower_id();
         this.followed_user_id = data.followed_user_id();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getFollower_id() {
-        return follower_id;
-    }
-
-    public void setFollower_id(Long follower_id) {
-        this.follower_id = follower_id;
-    }
-
-    public Long getFollowed_user_id() {
-        return followed_user_id;
-    }
-
-    public void setFollowed_user_id(Long followed_user_id) {
-        this.followed_user_id = followed_user_id;
-    }
-
-    public User getFollower() {
-        return follower;
-    }
-
-    public void setFollower(User follower) {
-        this.follower = follower;
-    }
-
-    public User getFollowedUser() {
-        return followedUser;
-    }
-
-    public void setFollowedUser(User followedUser) {
-        this.followedUser = followedUser;
     }
 }

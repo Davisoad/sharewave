@@ -1,11 +1,22 @@
 package br.com.sharewave.sharewave.entities.model;
 
 import br.com.sharewave.sharewave.dtos.UserDTO;
-import jakarta.persistence.*;
+import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "user")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,22 +26,7 @@ public class User {
     private String address;
     private String phone;
     private String email;
-    private LocalDate date;
-//    @ManyToMany
-//    @JoinTable(name = "followers_users")
-//    private List<Follower> followers;
-
-    public User() {
-    }
-
-    public User(String name, String password, String address, String phone, String email, LocalDate date) {
-        this.name = name;
-        this.password = password;
-        this.address = address;
-        this.phone = phone;
-        this.email = email;
-        this.date = date;
-    }
+    private String date;
 
     public User (UserDTO data) {
         this.name = data.name();
@@ -41,59 +37,8 @@ public class User {
         this.date = data.date();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
+    public <E> User(String username, String password, ArrayList<E> es) {
+        this.name = username;
         this.password = password;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
     }
 }
